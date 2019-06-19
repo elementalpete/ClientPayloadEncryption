@@ -1,8 +1,23 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model SampleModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<form action="Index">
+    @Html.HiddenFor(m => m.EncryptedSecret)
+    @Html.HiddenFor(m => m.EncryptedSymmetricalKey)
+    @Html.HiddenFor(m => m.IV)
+
+
+    <div class="form-group">
+        <label>First Name</label>
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Last Name</label>
+        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Secret String Goes Here!</label>
+        <input type="text" id="top-secret" class="form-control" value="This is a secret." />
+    </div>
+
+    <button type="button" onclick="EncryptAndSubmit();">Encrypt and Submit</button>
+</form>
